@@ -6,12 +6,13 @@ image: docker:20.10.16
 variables:
   DOCKER_TLS_CERTDIR: "/certs"
   DOCKERHUB_USERNAME: "geek1qaz"
+  DOCKERHUB_URL: "http://192.168.95.224:1080/"
 
 services:
   - docker:20.10.16-dind
 
 before_script:
-  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN $DOCKERHUB_URL
 
 build_and_push:
   stage: build
